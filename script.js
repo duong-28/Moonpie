@@ -1,17 +1,22 @@
 document.getElementById('dropdown').addEventListener('change', function() {
-    var selectedOption = this.value;
+    const moonImage = document.getElementById('moon-image');
+    const selectedOption = this.value;
+    
+    if (selectedOption === 'default') {
+        moonImage.style.display = 'none';
+        return;
+    }
 
-    if (selectedOption === 'option1') {
-        document.body.style.backgroundImage = "url('image/144p.jpeg')";
-    } else if (selectedOption === 'option2') {
-        document.body.style.backgroundImage = "url('image/240p.jpeg')";
-    } else if (selectedOption === 'option3') {
-        document.body.style.backgroundImage = "url('image/480p.jpeg')";
-    } else if (selectedOption === 'option4') {
-        document.body.style.backgroundImage = "url('image/720p.jpeg')";
-    } else if (selectedOption === 'option5') {
-        document.body.style.backgroundImage = "url('image/youu1.gif')";
-    } else {
-        document.body.style.backgroundImage = "";
+    const imagePaths = {
+        'option1': 'image/144p.jpg',
+        'option2': 'image/240p.jpg',
+        'option3': 'image/480p.jpg',
+        'option4': 'image/720p.jpg',
+        'option5': 'image/youu1.gif'
+    };
+
+    if (imagePaths[selectedOption]) {
+        moonImage.src = imagePaths[selectedOption];
+        moonImage.style.display = 'block';
     }
 });
